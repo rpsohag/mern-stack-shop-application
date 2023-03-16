@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import productCategoryRoute from './routes/product/category.js';
 import mongoDBConnect from './config/db.js';
+import { errorHandle } from './middlewares/errorHandler.js';
 
 // init express 
 const app = express();
@@ -26,6 +27,7 @@ app.use("/api/v1/product",productCategoryRoute);
 const PORT = process.env.PORT || 9090;
 
 
+app.use(errorHandle)
 
 // listen
 app.listen(PORT, () => {

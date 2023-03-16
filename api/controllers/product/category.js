@@ -1,6 +1,8 @@
+import { errorHandle } from "../../middlewares/errorHandler.js";
 import Category from "../../models/Category.js"
+import { createError } from "../../utilities/createError.js";
 
-export const getAllCategory = async (req,res) => {
+export const getAllCategory = async (req,res,next) => {
     try {
         const data = await Category.find();
         res.status(200).json({
@@ -8,7 +10,8 @@ export const getAllCategory = async (req,res) => {
             message : "successfully get all data"
         })
     } catch (error) {
-        console.log(error.message);
+        // next(error)
+        next(createError("data can not save",400))
     }
 }
 
