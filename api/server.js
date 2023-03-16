@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import productCategoryRoute from './routes/product/category.js';
+import productBrandRoute from './routes/product/brand.js';
 import mongoDBConnect from './config/db.js';
 import { errorHandle } from './middlewares/errorHandler.js';
 
@@ -21,6 +22,7 @@ app.use(express.static("api/public"));
 
 // routes
 app.use("/api/v1/product",productCategoryRoute); 
+app.use("/api/v1/product",productBrandRoute); 
 
 
 // environment variable
