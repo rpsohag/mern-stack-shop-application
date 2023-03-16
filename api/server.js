@@ -19,7 +19,7 @@ app.use(express.static("api/public"));
 
 
 // routes
-app.use("/api/v1/product",productCategoryRoute);
+app.use("/api/v1/product",productCategoryRoute); 
 
 
 // environment variable
