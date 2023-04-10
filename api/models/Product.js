@@ -28,15 +28,18 @@ const productSchema = mongoose.Schema({
     },
     categories : {
         type : [mongoose.Schema.Types.ObjectId],
-        ref : "Category"
+        ref : "Category",
+        default : []
     },
     brands : {
-        type : [mongoose.Schema.Types.ObjectId],
-        ref : "Brand"
+        type : mongoose.Schema.Types.ObjectId,
+        ref : "Brand",
+        default : null
     },
     tags : {
         type : [mongoose.Schema.Types.ObjectId],
-        ref : "Tag"
+        ref : "Tag",
+        default : []
     },
     short_desc : {
         type : String,

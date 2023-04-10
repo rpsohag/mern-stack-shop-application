@@ -16,7 +16,7 @@ const storage = multer.diskStorage({
         if(file.fieldname == "product-thumbnail"){
             cb(null, "api/public/uploads/product/thumbnail")
         }
-        if(file.fieldname == "product-gallery"){
+        if(file.fieldname == "product-galleries"){
             cb(null, "api/public/uploads/product/galleries")
         }
     }
@@ -25,8 +25,14 @@ const storage = multer.diskStorage({
 // product category middleware
 export const productCategoryMulter = multer({storage}).single("category-photo");
 export const productBrandMulter = multer({storage}).single("brand-photo");
-export const productThumbnailMulter = multer({storage}).single("product-thumbnail");
-export const productGalleryMulter = multer({storage}).fields([{
-    name : "product-galleries",
-    maxCount : 10
-}]);
+
+export const productMulter = multer({storage}).fields([
+    {
+        name : "product-thumbnail",
+        maxCount : 1
+    },
+    {
+        name : "product-galleries",
+        maxCount : 10
+    }
+]);
