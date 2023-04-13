@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Button, Form, Modal } from 'react-bootstrap';
-import axios from 'axios';
+import toast, { Toaster } from 'react-hot-toast';
 import { useDispatch } from 'react-redux';
 import { createBrand } from '../../redux/shop/actions';
 
@@ -19,6 +19,7 @@ const BrandModal = ({show, onHide, setModal}) => {
   form_data.append("brand-photo", logo);    
    dispatch(createBrand({data: form_data, setModal, setInput, setLogo}))
    e.target.reset()
+   toast.success('Brand Created Successfully!')
   }
   return (
     <div>
@@ -43,6 +44,7 @@ const BrandModal = ({show, onHide, setModal}) => {
             </Form>
             </Modal.Body>
         </Modal>
+        <Toaster />
     </div>
   )
 }

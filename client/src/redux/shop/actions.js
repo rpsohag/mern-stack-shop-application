@@ -1,5 +1,5 @@
 import axios from "axios"
-import { CREATE_BRAND_FAILED, CREATE_BRAND_SUCCESS, DELETE_BRAND_FAILED, DELETE_BRAND_SUCCESS, GET_BRAND_FAILED, GET_BRAND_REQUEST, GET_BRAND_SUCCESS } from "./actionTypes";
+import { BRAND_STATUS_SUCCESS, CREATE_BRAND_FAILED, CREATE_BRAND_SUCCESS, DELETE_BRAND_FAILED, DELETE_BRAND_SUCCESS, GET_BRAND_FAILED, GET_BRAND_REQUEST, GET_BRAND_SUCCESS } from "./actionTypes";
 
 // Brands actions
 export const getAllBrands = () => async (dispatch) => {
@@ -35,6 +35,20 @@ export const deleteBrand = (id) => async (dispatch) => {
     try {
         await axios.delete(`http://127.0.0.1:5050/api/v1/product/brand/${id}`).then((res) => {
             dispatch({type : DELETE_BRAND_SUCCESS, payload : id})
+        }).catch((error) => {
+            dispatch({type : DELETE_BRAND_FAILED, payload : error.response.data.message})
+            console.log(error);
+        });
+    } catch (error) {
+        console.log(error);
+        dispatch({type : DELETE_BRAND_FAILED, payload : error.response.data.message})
+    }
+}
+
+export const statusUpdateBrand = ({id, status}) => async (dispatch) => {
+    try {
+        await axios.patch(`http://127.0.0.1:5050/api/v1/product/brand-status/${id}`,{status}).then((res) => {
+            dispatch({type : BRAND_STATUS_SUCCESS, payload : res.data.brand})
         }).catch((error) => {
             dispatch({type : DELETE_BRAND_FAILED, payload : error.response.data.message})
             console.log(error);

@@ -10,3 +10,7 @@ a{
 li{
   list-style: none;
 }
+.form-switch input{
+  height: 30px;
+  width: 50px !important;
+}

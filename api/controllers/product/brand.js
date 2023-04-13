@@ -69,3 +69,16 @@ export const updateProductBrand = async (req, res, next) => {
         next(error)
     }
 }
+export const statusUpdate = async (req, res, next) => {
+    try {
+        const { id } = req.params;
+        const { status } = req.body;
+        const data = await Brand.findByIdAndUpdate(id, {status},{ new : true})
+        res.status(200).json({
+            brand : data,
+            message : "brand status updated successfully"
+        })
+    } catch (error) {
+        next(error)
+    }
+}
