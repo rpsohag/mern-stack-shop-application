@@ -5,19 +5,6 @@
         font-weight: 200;
         text-transform: uppercase;
     }
-    input[type="search"]{
-        border-radius: 0px;
-        padding: 10px 20px;
-        font-weight: 200;
-        border: 1px solid #e9e9e9;
-        outline: none;
-    }
-    input[type="search"]:focus{
-        border-color: rgba(236, 58, 14, 0.8);
-        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(248, 110, 11, 0.6);
-        outline: 0 none;
-    }
-
     .list{
         padding-left: 0px;
 
@@ -40,8 +27,8 @@
         button{
             padding: 0 10px;
             height: 40px;
-            border: 1px solid orangered;
-            background-color: orangered;
+            border: 1px solid #FFCA2C;
+            background-color: #FFCA2C;
             cursor: pointer;
         }
     }

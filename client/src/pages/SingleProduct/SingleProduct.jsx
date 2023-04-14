@@ -26,10 +26,9 @@ const SingleProduct = () => {
               </div>
               <span className="stock">20 in stock</span>
               <div className="cart-btn">
-                <input type="number" />
-                <button className='cart-button'>Add to cart</button>
-                <button className='wishlist-btn'><AiOutlineHeart/></button>
-
+                <input type="number" className='form-control cart-input' />
+                <button className='cart-button btn btn-warning'>Add to cart</button>
+                <button className='wishlist-btn btn'><AiOutlineHeart/></button>
               </div>
             </div>
           </Col>

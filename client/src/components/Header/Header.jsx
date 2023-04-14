@@ -17,7 +17,7 @@ const Header = () => {
                         </Link>
                     </div>
                       <div className="search-box d-flex gap-2">
-                        <input type="text" className='form-control' placeholder='Search here.....' />
+                        <input type="search" className='form-control' placeholder='Search here.....' />
                         <input type="submit" value="submit" className='btn search-btn' />
                     </div>
                 </Col>

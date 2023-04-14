@@ -53,11 +53,13 @@
                     outline: none;
                 }
             }
-            .cart-button{
-                border-radius: 0px;
-                background-color: orangered;
-                border-color: orangered;
+            .cart-input{
+                width: 80px;
             }
+            .cart-button{
+                width: 150px;
+            }
+
             .wishlist-btn{
                 background-color: transparent;
                 color: #aaa;

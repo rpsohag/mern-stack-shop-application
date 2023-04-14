@@ -2,23 +2,23 @@ import { BRAND_STATUS_SUCCESS, BRAND_UPDATE_SUCCESS, CREATE_BRAND_SUCCESS, DELET
 import { initialState } from "./initState.js";
 
 
-const shopReducer = (state = initialState, {type, payload}) => {
+const shopReducer = (state = initialState, { type, payload }) => {
     switch (type) {
         case GET_BRAND_REQUEST:
             return {
                 ...state,
-                locading : true
+                locading: true
             };
         case GET_BRAND_SUCCESS:
             return {
                 ...state,
-                locading : false,
-                brands : payload
+                locading: false,
+                brands: payload
             };
         case GET_BRAND_FAILED:
             return {
                 ...state,
-                locading : false,
+                locading: false,
                 brands: [],
                 error: payload
             };
@@ -33,18 +33,18 @@ const shopReducer = (state = initialState, {type, payload}) => {
                 brands: state.brands.filter((data) => data._id !== payload),
             };
         case BRAND_STATUS_SUCCESS:
-            state.brands[state.brands.findIndex((data) => data._id === payload._id)] = payload ;
+            state.brands[state.brands.findIndex((data) => data._id === payload._id)] = payload;
             return {
                 ...state,
                 brands: state.brands,
             };
         case BRAND_UPDATE_SUCCESS:
-            state.brands[state.brands.findIndex((data) => data._id === payload._id)] = payload ;
+            state.brands[state.brands.findIndex((data) => data._id === payload._id)] = payload;
             return {
                 ...state,
                 brands: state.brands,
             };
-    
+
         default:
             return state;
     }
