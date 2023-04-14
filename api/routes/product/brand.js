@@ -11,6 +11,6 @@ router.post('/brand/create', productBrandMulter , createProductBrand);
 router.get('/brand/:slug', singleProductBrand);
 router.delete('/brand/:id', deleteProductBrand);
 router.patch('/brand-status/:id', statusUpdate)
-router.put('/brand/update/:id', updateProductBrand);
+router.patch('/brand/update/:id', productBrandMulter, updateProductBrand);
 
 export default router;

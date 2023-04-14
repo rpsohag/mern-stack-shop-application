@@ -7,14 +7,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { deleteBrand, statusUpdateBrand } from '../../redux/shop/actions';
 import swal from 'sweetalert';
 import toast, { Toaster } from 'react-hot-toast';
-import BrandUpdateModal from './BrandUpdateModal';
+
 
 
 const Brand = () => {
-    const [modal, setModal ] = useState(false);
-    const [updateModal, setUpdateModal ] = useState(false);
-    const [updateId, setUpdateId ] = useState(null);
-    const [status, setStatus ] = useState(true);
+    const [modal, setModal ] = useState({
+      show: false,
+      type : 'create',
+      dataId : null
+    });
     const { brands } = useSelector((state) => state.shop);
     const dispatch = useDispatch();
     const deleteProductBrand = (id) => {
@@ -35,13 +36,16 @@ const Brand = () => {
 
     const handleStatusUpdate= (id, status) => {
       dispatch(statusUpdateBrand({id, status : !status}))
-      toast.success('Status Updated Successfully!')
+      
     } 
+    const handleBrandEdit = (id) => {
+      setModal({type : 'edit', show: true, dataId : id})
+    }
   return (
     <div className='table-content'>
         <div className="table-content-header">
             <h2>Brands</h2>
-            <button onClick={() => setModal(true)}> <AiOutlinePlus/> Create new brand</button>
+            <button onClick={() => setModal((prevState) => ({...prevState, show : true, type: 'create'}))}> <AiOutlinePlus/> Create new brand</button>
         </div>
         <div className="table-content-list">
             <Table>
@@ -64,7 +68,7 @@ const Brand = () => {
                       <Form.Check onChange={() => handleStatusUpdate(_id, status)} type='switch' id='custom-switch' label='' checked={status}/>
                     </td>
                     <td>
-                      <Button className='btn-sm' variant='warning' onClick={() => setUpdateModal(true)}>
+                      <Button className='btn-sm' variant='warning' onClick={() => handleBrandEdit(_id)}>
                         <FiEdit/>
                       </Button>
                       &nbsp;
@@ -78,8 +82,7 @@ const Brand = () => {
               </tbody>
             </Table>
         </div>
-            <BrandUpdateModal show={updateModal} onHide={() => setUpdateModal(false)}/>
-            <BrandCreateModal setModal={setModal} show={modal} onHide={() => setModal(false)}/>
+            <BrandCreateModal setModal={setModal} show={modal.show} dataId={modal.dataId} onHide={() => setModal((prevState) => ({...prevState, show: false}))} type={modal.type}/>
             <Toaster/>
     </div>
   )

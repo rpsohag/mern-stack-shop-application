@@ -59,8 +59,8 @@ export const deleteProductBrand = async (req, res, next) => {
 export const updateProductBrand = async (req, res, next) => {
     try {
         const { id } = req.params;
-        const { name, slug } = req.body;
-        const data = await Brand.findByIdAndUpdate(id, {name, slug},{ new : true})
+        const { name, photo } = req.body;
+        const data = await Brand.findByIdAndUpdate(id, {name, slug : createSlug(name), photo : req.file?.filename ? req.file.filename : photo},{ new : true})
         res.status(200).json({
             brand : data,
             message : "brand updated successfully"

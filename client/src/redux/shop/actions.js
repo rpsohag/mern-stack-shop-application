@@ -1,5 +1,6 @@
 import axios from "axios"
-import { BRAND_STATUS_SUCCESS, CREATE_BRAND_FAILED, CREATE_BRAND_SUCCESS, DELETE_BRAND_FAILED, DELETE_BRAND_SUCCESS, GET_BRAND_FAILED, GET_BRAND_REQUEST, GET_BRAND_SUCCESS } from "./actionTypes";
+import { toast } from "react-hot-toast";
+import { BRAND_STATUS_SUCCESS, BRAND_UPDATE_SUCCESS, CREATE_BRAND_FAILED, CREATE_BRAND_SUCCESS, DELETE_BRAND_FAILED, DELETE_BRAND_SUCCESS, GET_BRAND_FAILED, GET_BRAND_REQUEST, GET_BRAND_SUCCESS } from "./actionTypes";
 
 // Brands actions
 export const getAllBrands = () => async (dispatch) => {
@@ -49,6 +50,24 @@ export const statusUpdateBrand = ({id, status}) => async (dispatch) => {
     try {
         await axios.patch(`http://127.0.0.1:5050/api/v1/product/brand-status/${id}`,{status}).then((res) => {
             dispatch({type : BRAND_STATUS_SUCCESS, payload : res.data.brand})
+            toast.success('Status Updated Successfully!')
+        }).catch((error) => {
+            dispatch({type : DELETE_BRAND_FAILED, payload : error.response.data.message})
+            console.log(error);
+        });
+    } catch (error) {
+        console.log(error);
+        dispatch({type : DELETE_BRAND_FAILED, payload : error.response.data.message})
+    }
+}
+
+export const UpdateBrand = ({data, id, setModal}) => async (dispatch) => {
+    try {
+        await axios.patch(`http://127.0.0.1:5050/api/v1/product/brand/update/${id}`,data).then((res) => {
+            dispatch({type : BRAND_UPDATE_SUCCESS, payload : res.data.brand})
+            setModal((prevState) => ({...prevState, show : false}))
+            toast.success('Brand Updated Successfully!')
+            
         }).catch((error) => {
             dispatch({type : DELETE_BRAND_FAILED, payload : error.response.data.message})
             console.log(error);

@@ -9,12 +9,15 @@ const Navbar = () => {
         <nav className='menu'>
             <Container>
                 <Row>
-                    <Col>
+                    <Col className='d-flex justify-content-between align-items-center'>
                         <ul>
                             <li><NavLink to="/">Home</NavLink></li>
                             <li><NavLink to="/">Shop</NavLink></li>
                             <li><NavLink to="/wishlist">WishList</NavLink></li>
                             <li><NavLink to="/cart">Cart</NavLink></li>
+                            
+                        </ul>
+                        <ul>
                             <li><NavLink to="/admin">Admin</NavLink></li>
                         </ul>
                     </Col>

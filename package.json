@@ -5,9 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "server": "nodemon api/server.js",
-    "client": "npm start --prefix client",
-    "start": "concurrently \"npm run server\" \"npm run client\""
+    "start": "nodemon api/server.js",
+    "client": "npm start --prefix client"
   },
   "keywords": [],
   "author": "",
