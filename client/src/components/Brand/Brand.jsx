@@ -4,7 +4,7 @@ import { AiOutlinePlus } from "react-icons/ai";
 import BrandCreateModal from './BrandCreateModal';
 import { FiEdit, FiTrash2 } from "react-icons/fi";
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteBrand, statusUpdateBrand } from '../../redux/shop/actions';
+import { deleteBrand, statusUpdateBrand } from '../../redux/brand/actions';
 import swal from 'sweetalert';
 import toast, { Toaster } from 'react-hot-toast';
 
@@ -16,7 +16,7 @@ const Brand = () => {
       type : 'create',
       dataId : null
     });
-    const { brands } = useSelector((state) => state.shop);
+    const { brands } = useSelector((state) => state.brand);
     const dispatch = useDispatch();
     const deleteProductBrand = (id) => {
       swal({

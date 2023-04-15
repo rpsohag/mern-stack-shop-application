@@ -1,9 +1,13 @@
 import { combineReducers } from "redux";
-import shopReducer from "./shop/shopReducer";
+import brandReducer from "./brand/brandReducer";
+import categoryReducer from "./category/categoryReducer";
+import tagReducer from "./tag/tagReducer";
 
 // create root reducer
 const rootReducer = combineReducers({
-    shop : shopReducer
+    brand : brandReducer,
+    category : categoryReducer,
+    tag : tagReducer
 });
 
 

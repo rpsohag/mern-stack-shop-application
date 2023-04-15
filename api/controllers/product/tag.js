@@ -1,12 +1,13 @@
 // get all product tags
 
+import { createSlug } from "../../helper/slugCreate.js";
 import Tag from "../../models/Tag.js"
 
 export const getAllProductTags = async(req,res,next) => {
     try {
         const data = await Tag.find();
         res.status(200).json({
-            tag : data,
+            tags : data,
             message : "Succcessuflly get all tags"
         })
     } catch (error) {
@@ -17,12 +18,12 @@ export const getAllProductTags = async(req,res,next) => {
 
 export const createProductTag = async(req,res,next) => {
     try {
-        const {name, slug } = req.body;
+        const {name } = req.body;
         const data = await Tag.create({
-            name, slug
+            name, slug : createSlug(name)
         });
         res.status(200).json({
-            tag : data,
+            tags : data,
             message : "Tag created successfully"
         })
     } catch (error) {

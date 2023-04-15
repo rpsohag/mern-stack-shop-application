@@ -2,7 +2,7 @@ import { BRAND_STATUS_SUCCESS, BRAND_UPDATE_SUCCESS, CREATE_BRAND_SUCCESS, DELET
 import { initialState } from "./initState.js";
 
 
-const shopReducer = (state = initialState, { type, payload }) => {
+const brandReducer = (state = initialState, { type, payload }) => {
     switch (type) {
         case GET_BRAND_REQUEST:
             return {
@@ -50,4 +50,4 @@ const shopReducer = (state = initialState, { type, payload }) => {
     }
 }
 
-export default shopReducer;
+export default brandReducer;

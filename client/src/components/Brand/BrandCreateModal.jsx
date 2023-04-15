@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Button, Form, Modal } from 'react-bootstrap';
 import toast, { Toaster } from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
-import { createBrand, UpdateBrand } from '../../redux/shop/actions';
+import { createBrand, UpdateBrand } from '../../redux/brand/actions';
 
 const BrandModal = ({show, onHide, setModal, type, dataId}) => {
   const [input, setInput ] = useState("");
@@ -12,7 +12,7 @@ const BrandModal = ({show, onHide, setModal, type, dataId}) => {
     photo : ""
   })
   const dispatch  = useDispatch();
-  const { brands } = useSelector((state) => state.shop);
+  const { brands } = useSelector((state) => state.brand);
   const handleLogoUpload = e => {
     setLogo(e.target.files[0]);
   }

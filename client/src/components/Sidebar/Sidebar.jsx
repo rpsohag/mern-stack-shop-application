@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import "./Sidebar.scss"
 
 const Sidebar = () => {
@@ -58,9 +59,9 @@ const Sidebar = () => {
             <h3 className='widget-title'>Tags</h3>
             <hr />
             <div className='items d-flex flex-wrap gap-2'>
-                <a href="" className='btn btn-warning'>Eid</a>
-                <a href="" className='btn btn-warning'>Puja</a>
-                <a href="" className='btn btn-warning'>Corona</a>
+                <Link href="#" className='btn btn-warning'>Eid</Link>
+                <Link href="" className='btn btn-warning'>Puja</Link>
+                <Link href="" className='btn btn-warning'>Corona</Link>
             </div>
         </div>
     </div>
